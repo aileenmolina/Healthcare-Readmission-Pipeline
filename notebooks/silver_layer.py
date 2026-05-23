@@ -1,6 +1,5 @@
 from pyspark.sql.functions import col, expr, trim
 
-# Ensuring the target Silver Schema database exists in catalog
 spark.sql("CREATE SCHEMA IF NOT EXISTS workspace.healthcare_silver")
 
 print("==================================================")
@@ -8,9 +7,7 @@ print("STARTING SILVER LAYER PIPELINE RUN...")
 print("==================================================")
 
 
-# =====================================================================
 # HOSPITAL GENERAL INFORMATION (Hospital Grain)
-# =====================================================================
 print("[INFO] Processing Table 1: Hospital General Information...")
 bronze_info_df = spark.read.table(
     "workspace.healthcare_bronze.hospital_general_information"
@@ -48,9 +45,7 @@ cleaned_info_df.write.format("delta").mode("overwrite").saveAsTable(
 print("[SUCCESS] Table 1: hospital_general_information successfully written to Silver!")
 
 
-# =====================================================================
 # HOSPITAL READMISSIONS (Hospital Grain)
-# =====================================================================
 print("\n[INFO] Processing Table 2: Hospital Readmissions...")
 bronze_readmissions = spark.read.table(
     "workspace.healthcare_bronze.hospital_readmissions"
@@ -83,9 +78,7 @@ cleaned_readmissions.write.format("delta").mode("overwrite").saveAsTable(
 print("[SUCCESS] Table 2: hospital_readmissions successfully written to Silver!")
 
 
-# =====================================================================
 # HOSPITAL EFFECTIVE CARE (Measure Grain)
-# =====================================================================
 print("\n[INFO] Processing Table 3: Hospital Effective Care...")
 bronze_care = spark.read.table("workspace.healthcare_bronze.hospital_effective_care")
 
@@ -112,9 +105,7 @@ cleaned_care.write.format("delta").mode("overwrite").saveAsTable(
 print("[SUCCESS] Table 3: hospital_effective_care successfully written to Silver!")
 
 
-# =====================================================================
 # MEDICARE SPENDING (Measure Grain)
-# =====================================================================
 print("\n[INFO] Processing Table 4: Hospital Medicare Spending...")
 bronze_spending = spark.read.table(
     "workspace.healthcare_bronze.hospital_medicare_spending"

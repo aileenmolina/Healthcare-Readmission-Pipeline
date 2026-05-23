@@ -1,4 +1,3 @@
-#  Read the CSV and clean up the spaces in column names
 import re
 
 volume_path = "/Volumes/workspace/default/healthcare_landing/hospital_general_info.csv"
@@ -10,7 +9,6 @@ raw_hospital_info = (
     .load(volume_path)
 )
 
-# LOOP THROUGH COLUMNS AND REPLACE SPACES/SPECIAL CHARACTERS WITH UNDERSCORES
 # This converts "Facility ID" to "Facility_ID" and removes parentheses ()
 cleaned_columns = [
     re.sub(r"[ ,;{}()\n\t=]+", "_", col).strip("_") for col in raw_hospital_info.columns
