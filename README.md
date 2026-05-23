@@ -1,6 +1,6 @@
 # Automated Cloud Healthcare Data Pipeline & Analytics Platform
 
-An end-to-end data engineering solution that automates the ingestion, transformation, and visualization of public Centers for Medicare & Medicaid Services (CMS) data to track, profile, and isolate national hospital readmission risks.
+Data engineering solution that automates the ingestion, transformation, and visualization of public Centers for Medicare & Medicaid Services (CMS) data to track, profile, and isolate national hospital readmission risks.
 
 ## Executive Dashboard Preview
 
